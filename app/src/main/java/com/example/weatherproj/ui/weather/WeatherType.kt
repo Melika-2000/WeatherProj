@@ -1,4 +1,6 @@
-package com.example.weatherproj
+package com.example.weatherproj.ui.weather
+
+import com.example.weatherproj.R
 
 enum class WeatherType(
     val description: String,

@@ -1,5 +1,7 @@
 package com.example.weatherproj
 
+import com.example.weatherproj.ui.weather.WeatherType
+
 data class FakeWeather(
     val cityName: String,
     val time: String,
