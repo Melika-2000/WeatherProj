@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.weatherproj.ui.cities.CitiesScreen
 import com.example.weatherproj.ui.theme.WeatherProjTheme
 import com.example.weatherproj.ui.weather.WeatherScreen
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherProjTheme {
-                WeatherScreen()
+                CitiesScreen()
             }
         }
     }

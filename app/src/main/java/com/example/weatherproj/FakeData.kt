@@ -8,6 +8,7 @@ data class FakeWeather(
     val humidity: String,
     val wind: String,
     val temperature: String,
+    val cloudCover: String,
     val moreDetail: String = ""
 )
 
@@ -20,7 +21,8 @@ object FakeWeatherData {
             true,
             "50%",
             "1.5m/s",
-            "30.6c"
+            "30",
+            "10%"
         ),
         FakeWeather(
             "Mashhad",
@@ -29,7 +31,8 @@ object FakeWeatherData {
             true,
             "66%",
             "1.9m/s",
-            "26c"
+            "26",
+            "88%"
         ),
         FakeWeather(
             "Sari",
@@ -38,7 +41,8 @@ object FakeWeatherData {
             true,
             "70%",
             "2.3m/s",
-            "22.8c"
+            "22",
+            "78%"
         ),
         FakeWeather(
             "Tokyo",
@@ -47,7 +51,8 @@ object FakeWeatherData {
             false,
             "62%",
             "1.1m/s",
-            "24.8c"
+            "24",
+            "70%"
         ),
         FakeWeather(
             "Toronto",
@@ -56,7 +61,8 @@ object FakeWeatherData {
             false,
             "45%",
             "2.1m/s",
-            "12c"
+            "8",
+            "66%"
         )
 
     )
