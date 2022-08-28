@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherproj.FakeWeather
 import com.example.weatherproj.R
+import com.example.weatherproj.ui.*
 import com.example.weatherproj.ui.theme.LightBlue
 import com.example.weatherproj.ui.theme.NavyBlue
 
@@ -55,62 +56,6 @@ fun WeatherScreen(weather: FakeWeather) {
 }
 
 @Composable
-fun TopBar(isDay: Boolean) {
-    val color = ColorSetter(isDay = isDay)
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .background(color = color)
-            .padding(start = 10.dp),
-        contentAlignment = Alignment.CenterStart
-    ) {
-        CustomText(text = "Weather")
-    }
-}
-
-@Composable
-fun BottomBar(isDay: Boolean) {
-    val color = ColorSetter(isDay = isDay)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(color = color)
-            .height(50.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .clickable { },
-            contentAlignment = Alignment.Center
-        ) {
-            IconWithDescription(
-                iconId = R.drawable.location_icon,
-                "Cities",
-                iconSize = 25.dp,
-                textSize = 10.sp
-            )
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .clickable { },
-            contentAlignment = Alignment.Center
-        ) {
-            IconWithDescription(
-                iconId = R.drawable.baseline_cloud_24,
-                "Weather",
-                iconSize = 25.dp,
-                textSize = 10.sp
-            )
-        }
-    }
-
-}
-
-@Composable
 fun TemperatureDetail(temperature: String) {
     Row() {
         CustomText(text = temperature, textSize = 60.sp)
@@ -136,33 +81,6 @@ fun IconWithDescription(
         CustomIcon(iconId = iconId, size = iconSize)
         CustomText(text = description, textSize = textSize)
     }
-}
-
-@Composable
-fun CustomText(
-    text: String,
-    textSize: TextUnit = 20.sp,
-    fontWeight: FontWeight? = null
-) {
-    Text(
-        text = text,
-        color = Color.White.copy(alpha = 0.8f),
-        fontSize = textSize,
-        fontWeight = fontWeight,
-    )
-}
-
-@Composable
-fun CustomIcon(
-    iconId: Int,
-    size: Dp = 40.dp
-) {
-    Icon(
-        painterResource(iconId),
-        contentDescription = "icon",
-        tint = Color.White.copy(alpha = 0.8f),
-        modifier = Modifier.size(size)
-    )
 }
 
 @Composable
@@ -203,7 +121,3 @@ private fun BackgroundSetter(isDay: Boolean) {
     }
 }
 
-@Composable
-fun ColorSetter(isDay: Boolean): Color {
-    return if (isDay) LightBlue else NavyBlue
-}

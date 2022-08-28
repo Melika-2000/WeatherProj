@@ -65,8 +65,87 @@ object FakeWeatherData {
             "2.1m/s",
             "8",
             "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
+        ),
+        FakeWeather(
+            "Toronto",
+            "Aug 29",
+            WeatherType.SNOWY,
+            false,
+            "45%",
+            "2.1m/s",
+            "8",
+            "66%"
         )
-
     )
 }
 
