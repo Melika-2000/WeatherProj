@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,42 +15,28 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.weatherproj.FakeWeatherData
 import com.example.weatherproj.R
-import com.example.weatherproj.ui.cities.CitiesScreen
 import com.example.weatherproj.ui.theme.LightBlue
 import com.example.weatherproj.ui.theme.NavyBlue
-import com.example.weatherproj.ui.weather.WeatherScreen
 
 @Composable
 fun TopBar(isDay: Boolean = false) {
-    val color = ColorSetter(isDay = isDay)
-    Box(
+    val color = colorSetter(isDay = isDay)
+    TopAppBar(backgroundColor = color,
         modifier = Modifier
-            .fillMaxWidth()
             .height(50.dp)
-            .background(color = color)
             .graphicsLayer {
                 clip = true
-                shadowElevation = 3f
+                shadowElevation = 5f
             }
-            .padding(start = 10.dp),
-        contentAlignment = Alignment.CenterStart
     ) {
         CustomText(text = "Weather")
     }
 }
 
 @Composable
-fun BottomBar(isDay: Boolean = false) {
-    val color = ColorSetter(isDay = isDay)
+fun BottomBar(isDay: Boolean = false) { //TODO in navigation task
+    val color = colorSetter(isDay = isDay)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -96,28 +81,35 @@ fun BottomBar(isDay: Boolean = false) {
 @Composable
 fun CustomText(
     text: String,
+    modifier: Modifier = Modifier,
     textSize: TextUnit = 20.sp,
-    fontWeight: FontWeight? = null
+    fontWeight: FontWeight? = null,
+    color: Color = Color.White,
+    alpha: Float = 0.8f
 ) {
     Text(
         text = text,
-        color = Color.White.copy(alpha = 0.8f),
+        color = color.copy(alpha = alpha),
         fontSize = textSize,
         fontWeight = fontWeight,
+        modifier = modifier
     )
 }
 
 @Composable
 fun CustomIcon(
     iconId: Int,
+    modifier: Modifier = Modifier,
     size: Dp = 40.dp,
-    clickable: Boolean = false
+    clickable: Boolean = false,
+    color: Color = Color.White,
+    alpha: Float = 0.8f
 ) {
     Icon(
         painterResource(iconId),
         contentDescription = "icon",
-        tint = Color.White.copy(alpha = 0.8f),
-        modifier = Modifier
+        tint = color.copy(alpha = alpha),
+        modifier = modifier
             .size(size)
             .clickable(enabled = clickable, onClick = {}),
     )
@@ -138,8 +130,7 @@ fun IconWithDescription(
     }
 }
 
-@Composable
-fun ColorSetter(isDay: Boolean): Color {
+private fun colorSetter(isDay: Boolean): Color {
     return if (isDay) LightBlue else NavyBlue
 }
 

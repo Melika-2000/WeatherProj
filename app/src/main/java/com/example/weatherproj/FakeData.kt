@@ -2,7 +2,7 @@ package com.example.weatherproj
 
 import com.example.weatherproj.ui.weather.WeatherType
 
-data class FakeWeather(
+data class Weather(
     val cityName: String,
     val time: String,
     val weatherType: WeatherType,
@@ -11,12 +11,11 @@ data class FakeWeather(
     val wind: String,
     val temperature: String,
     val cloudCover: String,
-    val moreDetail: String = ""
 )
 
 object FakeWeatherData {
     val list = listOf(
-        FakeWeather(
+        Weather(
             "Tenran",
             "Aug 29",
             WeatherType.SUNNY,
@@ -26,7 +25,7 @@ object FakeWeatherData {
             "30",
             "10%"
         ),
-        FakeWeather(
+        Weather(
             "Mashhad",
             "Aug 29",
             WeatherType.RAINY,
@@ -36,7 +35,7 @@ object FakeWeatherData {
             "26",
             "88%"
         ),
-        FakeWeather(
+        Weather(
             "Sari",
             "Aug 29",
             WeatherType.CLOUDY,
@@ -46,7 +45,7 @@ object FakeWeatherData {
             "22",
             "78%"
         ),
-        FakeWeather(
+        Weather(
             "Tokyo",
             "Aug 29",
             WeatherType.STORMY,
@@ -56,7 +55,7 @@ object FakeWeatherData {
             "24",
             "70%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -66,7 +65,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -76,7 +75,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -86,7 +85,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -96,7 +95,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -106,7 +105,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -116,7 +115,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -126,7 +125,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,
@@ -136,7 +135,7 @@ object FakeWeatherData {
             "8",
             "66%"
         ),
-        FakeWeather(
+        Weather(
             "Toronto",
             "Aug 29",
             WeatherType.SNOWY,

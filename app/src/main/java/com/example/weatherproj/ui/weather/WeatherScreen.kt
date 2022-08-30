@@ -14,41 +14,42 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherproj.FakeWeather
+import com.example.weatherproj.Weather
 import com.example.weatherproj.R
 import com.example.weatherproj.ui.*
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun WeatherScreen(weather: FakeWeather) {
-    Scaffold(
-        backgroundColor = Color.Transparent,
-        topBar = { TopBar(weather.isDay) },
-    ) {
-
-        BackgroundSetter(isDay = weather.isDay)
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+fun WeatherScreen(weather: Weather) {
+    WeatherBackground(isDay = weather.isDay) {
+        Scaffold(
+            backgroundColor = Color.Transparent,
+            topBar = { TopBar(weather.isDay) },
+            bottomBar = { BottomBar(weather.isDay) }
         ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
 
-            Spacer(modifier = Modifier.size(15.dp))
-            TopRowInfo(weather = weather)
-            Spacer(modifier = Modifier.size(40.dp))
-            TemperatureDetail(temperature = weather.temperature)
-            CityName(name = weather.cityName)
-            IconWithDescription(
-                iconId = weather.weatherType.icon,
-                description = weather.weatherType.description
-            )
+                Spacer(modifier = Modifier.size(15.dp))
+                WeatherDetails(weather = weather)
+                Spacer(modifier = Modifier.size(40.dp))
+                WeatherTemperature(temperature = weather.temperature)
+                CityName(name = weather.cityName)
+                IconWithDescription(
+                    iconId = weather.weatherType.icon,
+                    description = weather.weatherType.description
+                )
 
+            }
         }
     }
 }
 
 @Composable
-fun TemperatureDetail(temperature: String) {
+fun WeatherTemperature(temperature: String) {
     Row() {
         CustomText(text = temperature, textSize = 60.sp)
         CustomText(text = "°C", fontWeight = FontWeight.Bold)
@@ -61,21 +62,21 @@ fun CityName(name: String) {
 }
 
 @Composable
-private fun TopRowInfo(weather: FakeWeather) {
+private fun WeatherDetails(weather: Weather) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
     ) {
-        WeatherComponent(iconId = R.drawable.cloud_icon, info = weather.cloudCover)
+        WeatherDetailsItem(iconId = R.drawable.cloud_icon, info = weather.cloudCover)
         Spacer(modifier = Modifier.size(30.dp))
-        WeatherComponent(iconId = R.drawable.wind, info = weather.wind)
+        WeatherDetailsItem(iconId = R.drawable.wind, info = weather.wind)
         Spacer(modifier = Modifier.size(30.dp))
-        WeatherComponent(iconId = R.drawable.humidity, info = weather.humidity)
+        WeatherDetailsItem(iconId = R.drawable.humidity, info = weather.humidity)
     }
 }
 
 @Composable
-private fun WeatherComponent(iconId: Int, info: String) {
+private fun WeatherDetailsItem(iconId: Int, info: String) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(5.dp)
@@ -86,7 +87,7 @@ private fun WeatherComponent(iconId: Int, info: String) {
 }
 
 @Composable
-private fun BackgroundSetter(isDay: Boolean) {
+private fun WeatherBackground(isDay: Boolean, content: @Composable BoxScope.() -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         val id = if (isDay) R.drawable.day_background else R.drawable.night_background
         Image(
@@ -95,6 +96,7 @@ private fun BackgroundSetter(isDay: Boolean) {
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
+        content()
     }
 }
 
