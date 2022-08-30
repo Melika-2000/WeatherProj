@@ -49,7 +49,7 @@ fun WeatherScreen(weather: Weather) {
 }
 
 @Composable
-fun WeatherTemperature(temperature: String) {
+private fun WeatherTemperature(temperature: String) {
     Row() {
         CustomText(text = temperature, textSize = 60.sp)
         CustomText(text = "°C", fontWeight = FontWeight.Bold)
@@ -57,7 +57,7 @@ fun WeatherTemperature(temperature: String) {
 }
 
 @Composable
-fun CityName(name: String) {
+private fun CityName(name: String) {
     CustomText(text = name, fontWeight = FontWeight.Bold)
 }
 
