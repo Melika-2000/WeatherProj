@@ -167,21 +167,19 @@ private fun CustomCard(cityWeather: Weather) {
             modifier = Modifier.padding(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            CustomIcon(iconId = cityWeather.weatherType.icon, modifier = Modifier.weight(1f))
+            CustomIcon(iconId = cityWeather.weatherType.icon)
             Spacer(modifier = Modifier.size(10.dp))
-            CustomText(text = cityWeather.cityName, modifier = Modifier.weight(6f))
+            CustomText(text = cityWeather.cityName, modifier = Modifier.weight(1f))
             CustomIcon(
                 iconId = R.drawable.edit_icon,
                 size = iconSize,
                 clickable = true,
-                modifier = Modifier.weight(0.5f)
             )
             Spacer(modifier = Modifier.size(5.dp))
             CustomIcon(
                 iconId = R.drawable.delete_icon,
                 size = iconSize,
                 clickable = true,
-                modifier = Modifier.weight(0.5f)
             )
         }
     }

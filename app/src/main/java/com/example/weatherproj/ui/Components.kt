@@ -111,7 +111,6 @@ fun CustomText(
 @Composable
 fun CustomIcon(
     iconId: Int,
-    modifier: Modifier = Modifier,
     size: Dp = 40.dp,
     clickable: Boolean = false,
     color: Color = Color.White,
@@ -122,7 +121,7 @@ fun CustomIcon(
         painterResource(iconId),
         contentDescription = "icon",
         tint = color.copy(alpha = alpha),
-        modifier = modifier
+        modifier = Modifier
             .size(size)
             .clickable(
                 enabled = clickable,
