@@ -1,6 +1,7 @@
 package com.example.weatherproj.ui.cities
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherproj.Weather
@@ -124,8 +126,13 @@ private fun SearchField(
 
 @Composable
 private fun SearchButton(modifier: Modifier, enabled: Boolean = true) {
+    val context = LocalContext.current
     Button(
-        onClick = {},
+        onClick = {
+            Toast
+                .makeText(context, "TODO", Toast.LENGTH_SHORT)
+                .show()
+        },
         enabled = enabled,
         modifier = modifier.height(55.dp),
         shape = RoundedCornerShape(10.dp),

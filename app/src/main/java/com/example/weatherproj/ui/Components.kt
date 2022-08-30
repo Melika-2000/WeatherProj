@@ -1,14 +1,17 @@
 package com.example.weatherproj.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -47,11 +50,16 @@ fun BottomBar(isDay: Boolean = false) { //TODO in navigation task
                 shadowElevation = 3f
             }
     ) {
+        val context = LocalContext.current
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-                .clickable { },
+                .clickable {
+                    Toast
+                        .makeText(context, "TODO", Toast.LENGTH_SHORT)
+                        .show()
+                },
             contentAlignment = Alignment.Center
         ) {
             IconWithDescription(
@@ -65,7 +73,11 @@ fun BottomBar(isDay: Boolean = false) { //TODO in navigation task
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-                .clickable { },
+                .clickable {
+                    Toast
+                        .makeText(context, "TODO", Toast.LENGTH_SHORT)
+                        .show()
+                },
             contentAlignment = Alignment.Center
         ) {
             IconWithDescription(
@@ -105,13 +117,20 @@ fun CustomIcon(
     color: Color = Color.White,
     alpha: Float = 0.8f
 ) {
+    val context = LocalContext.current
     Icon(
         painterResource(iconId),
         contentDescription = "icon",
         tint = color.copy(alpha = alpha),
         modifier = modifier
             .size(size)
-            .clickable(enabled = clickable, onClick = {}),
+            .clickable(
+                enabled = clickable,
+                onClick = {
+                    Toast
+                        .makeText(context, "TODO", Toast.LENGTH_SHORT)
+                        .show()
+                }),
     )
 }
 
