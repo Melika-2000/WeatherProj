@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,7 +23,7 @@ import com.example.weatherproj.ui.theme.NavyBlue
 
 @Composable
 fun TopBar(isDay: Boolean = false) {
-    val color = colorSetter(isDay = isDay)
+    val color = specifyColor(isDay = isDay)
     TopAppBar(backgroundColor = color,
         modifier = Modifier
             .height(50.dp)
@@ -39,7 +38,7 @@ fun TopBar(isDay: Boolean = false) {
 
 @Composable
 fun BottomBar(isDay: Boolean = false) { //TODO in navigation task
-    val color = colorSetter(isDay = isDay)
+    val color = specifyColor(isDay = isDay)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -148,7 +147,7 @@ fun IconWithDescription(
     }
 }
 
-private fun colorSetter(isDay: Boolean): Color {
+private fun specifyColor(isDay: Boolean): Color {
     return if (isDay) LightBlue else NavyBlue
 }
 
