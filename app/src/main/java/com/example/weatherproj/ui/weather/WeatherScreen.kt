@@ -3,10 +3,7 @@ package com.example.weatherproj.ui.weather
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,15 +12,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherproj.FakeWeather
 import com.example.weatherproj.R
 import com.example.weatherproj.ui.*
-import com.example.weatherproj.ui.theme.LightBlue
-import com.example.weatherproj.ui.theme.NavyBlue
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -31,11 +25,9 @@ fun WeatherScreen(weather: FakeWeather) {
     Scaffold(
         backgroundColor = Color.Transparent,
         topBar = { TopBar(weather.isDay) },
-        bottomBar = { BottomBar(weather.isDay) }
     ) {
 
         BackgroundSetter(isDay = weather.isDay)
-
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -66,21 +58,6 @@ fun TemperatureDetail(temperature: String) {
 @Composable
 fun CityName(name: String) {
     CustomText(text = name, fontWeight = FontWeight.Bold)
-}
-
-@Composable
-fun IconWithDescription(
-    iconId: Int,
-    description: String,
-    iconSize: Dp = 160.dp,
-    textSize: TextUnit = 20.sp,
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        CustomIcon(iconId = iconId, size = iconSize)
-        CustomText(text = description, textSize = textSize)
-    }
 }
 
 @Composable

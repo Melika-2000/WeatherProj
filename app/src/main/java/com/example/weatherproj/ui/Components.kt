@@ -3,9 +3,9 @@ package com.example.weatherproj.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,10 +16,19 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.weatherproj.FakeWeatherData
 import com.example.weatherproj.R
+import com.example.weatherproj.ui.cities.CitiesScreen
 import com.example.weatherproj.ui.theme.LightBlue
 import com.example.weatherproj.ui.theme.NavyBlue
-import com.example.weatherproj.ui.weather.IconWithDescription
+import com.example.weatherproj.ui.weather.WeatherScreen
 
 @Composable
 fun TopBar(isDay: Boolean = false) {
@@ -111,10 +120,26 @@ fun CustomIcon(
         modifier = Modifier
             .size(size)
             .clickable(enabled = clickable, onClick = {}),
-        )
+    )
+}
+
+@Composable
+fun IconWithDescription(
+    iconId: Int,
+    description: String,
+    iconSize: Dp = 160.dp,
+    textSize: TextUnit = 20.sp,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        CustomIcon(iconId = iconId, size = iconSize)
+        CustomText(text = description, textSize = textSize)
+    }
 }
 
 @Composable
 fun ColorSetter(isDay: Boolean): Color {
     return if (isDay) LightBlue else NavyBlue
 }
+
