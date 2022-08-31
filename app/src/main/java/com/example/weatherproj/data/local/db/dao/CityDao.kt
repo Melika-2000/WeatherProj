@@ -13,11 +13,11 @@ interface CityDao {
     fun getCity(cityId: Int) : Flow<CityEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(city: CityEntity)
+    suspend fun insertOrIgnoreCity(city: CityEntity)
 
     @Update
     suspend fun updateCity(city: CityEntity)
 
     @Delete
-    suspend fun delete(city: CityEntity)
+    suspend fun deleteCity(city: CityEntity)
 }
