@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.weatherproj.Weather
 import com.example.weatherproj.R
 import com.example.weatherproj.ui.*
@@ -30,27 +31,19 @@ import com.example.weatherproj.ui.theme.NavyBlue
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CitiesScreen(data: List<Weather>) {
-
-    Scaffold(
-        backgroundColor = LightNavyBlue,
-        topBar = { TopBar() },
-        bottomBar = { BottomBar() }
+    LazyColumn(
+        modifier = Modifier
+            .padding(
+                start = 15.dp,
+                end = 15.dp,
+                bottom = 55.dp
+            )
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .padding(
-                    start = 15.dp,
-                    end = 15.dp,
-                    bottom = it.calculateBottomPadding()
-                )
-        ) {
-            item { SearchBar() }
-            items(data) { city ->
-                CustomCard(city)
-            }
+        item { SearchBar() }
+        items(data) { city ->
+            CustomCard(city)
         }
     }
-
 }
 
 @Composable
