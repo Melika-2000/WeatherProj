@@ -4,10 +4,10 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 data class CityAndWeather(
-    val city: CityEntity,
+    @Embedded val city: CityEntity,
     @Relation(
         parentColumn = "city_id",
-        entityColumn = "weather_id"
+        entityColumn = "city_id"
     )
-    @Embedded val weather: WeatherEntity
+    val weather: WeatherEntity
 )
