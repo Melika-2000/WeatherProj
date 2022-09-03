@@ -60,13 +60,15 @@ fun BottomBar(navController: NavController, isDay: Boolean = false) {
             BottomNavigationItem(
                 icon = {
                     Icon(
-                        painter = painterResource(screen.icon), contentDescription = null,
+                        painter = painterResource(screen.icon),
+                        contentDescription = "icon",
                         modifier = Modifier.size(25.dp),
-                        tint = Color.White.copy(alpha = 0.8f)
                     )
                 },
-                label = { CustomText(text = screen.title, textSize = 10.sp) },
+                label = { Text(text = screen.title, fontSize = 10.sp) },
                 selected = currentRoute == screen.route,
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(alpha = 0.4f),
                 onClick = {
                     navController.navigate(screen.route) {
 
