@@ -8,13 +8,13 @@ import androidx.room.PrimaryKey
 data class WeatherEntity(
     @ColumnInfo(name = "city_id") @PrimaryKey val cityId: Int,
     @ColumnInfo(name = "humidity_percent") val humidityPercent: Int? = null,
-    @ColumnInfo(name = "win_speed") val windSpeed: Int? = null,
+    @ColumnInfo(name = "win_speed") val windSpeed: Float? = null,
     @ColumnInfo(name = "cloudiness_percent") val cloudinessPercent: Int? = null,
-    @ColumnInfo(name = "main") val main: String,
-    @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "main") val main: String? = null,
+    @ColumnInfo(name = "description") val description: String? = null,
     @ColumnInfo(name = "temperature") val temperature: Float? = null,
-    @ColumnInfo(name = "time") val time: Long = 0,
-    @ColumnInfo(name = "sunrise") val sunrise: Long = 0,
-    @ColumnInfo(name = "sunset") val sunset: Long = 0
+    @ColumnInfo(name = "time") val time: Long? = null,
+    @ColumnInfo(name = "sunrise") val sunrise: Long? = null,
+    @ColumnInfo(name = "sunset") val sunset: Long? = null
 )
 
