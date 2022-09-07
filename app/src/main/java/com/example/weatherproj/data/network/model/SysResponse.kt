@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Sys(
+data class SysResponse(
     @SerialName("sunrise") val sunrise: Long? = null,
     @SerialName("sunset") val sunset: Long? = null
 )
