@@ -23,27 +23,20 @@ import com.example.weatherproj.ui.*
 @Composable
 fun WeatherScreen(weather: Weather) {
     WeatherBackground(isDay = weather.isDay) {
-        Scaffold(
-            backgroundColor = Color.Transparent,
-            topBar = { TopBar(weather.isDay) },
-            bottomBar = { BottomBar(weather.isDay) }
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
 
-                Spacer(modifier = Modifier.size(15.dp))
-                WeatherDetails(weather = weather)
-                Spacer(modifier = Modifier.size(40.dp))
-                WeatherTemperature(temperature = weather.temperature)
-                CityName(name = weather.cityName)
-                IconWithDescription(
-                    iconId = weather.weatherType.icon,
-                    description = weather.weatherType.description
-                )
-
-            }
+            Spacer(modifier = Modifier.size(15.dp))
+            WeatherDetails(weather = weather)
+            Spacer(modifier = Modifier.size(40.dp))
+            WeatherTemperature(temperature = weather.temperature)
+            CityName(name = weather.cityName)
+            IconWithDescription(
+                iconId = weather.weatherType.icon,
+                description = weather.weatherType.description
+            )
         }
     }
 }

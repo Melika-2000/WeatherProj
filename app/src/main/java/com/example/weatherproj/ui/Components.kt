@@ -1,11 +1,11 @@
 package com.example.weatherproj.ui
 
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,9 +17,16 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherproj.R
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.weatherproj.Weather
+import com.example.weatherproj.ui.cities.CitiesScreen
 import com.example.weatherproj.ui.theme.LightBlue
 import com.example.weatherproj.ui.theme.NavyBlue
+import com.example.weatherproj.ui.weather.WeatherScreen
 
 @Composable
 fun TopBar(isDay: Boolean = false) {
@@ -37,54 +44,56 @@ fun TopBar(isDay: Boolean = false) {
 }
 
 @Composable
-fun BottomBar(isDay: Boolean = false) { //TODO in navigation task
+fun BottomBar(navController: NavController, isDay: Boolean = false) {
     val color = specifyColor(isDay = isDay)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(color = color)
-            .height(50.dp)
-            .graphicsLayer {
-                clip = true
-                shadowElevation = 3f
-            }
+    val screens = listOf(
+        BottomNavItem.Cities,
+        BottomNavItem.Weather,
+    )
+    BottomNavigation(
+        backgroundColor = color,
+        contentColor = Color.White
     ) {
-        val context = LocalContext.current
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .clickable {
-                    Toast
-                        .makeText(context, "TODO", Toast.LENGTH_SHORT)
-                        .show()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+        screens.forEach { screen ->
+            BottomNavigationItem(
+                icon = {
+                    Icon(
+                        painter = painterResource(screen.icon),
+                        contentDescription = "icon",
+                        modifier = Modifier.size(25.dp),
+                    )
                 },
-            contentAlignment = Alignment.Center
-        ) {
-            IconWithDescription(
-                iconId = R.drawable.location_icon,
-                "Cities",
-                iconSize = 25.dp,
-                textSize = 10.sp
+                label = { Text(text = screen.title, fontSize = 10.sp) },
+                selected = currentRoute == screen.route,
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(alpha = 0.4f),
+                onClick = {
+                    navController.navigate(screen.route) {
+
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
             )
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f)
-                .clickable {
-                    Toast
-                        .makeText(context, "TODO", Toast.LENGTH_SHORT)
-                        .show()
-                },
-            contentAlignment = Alignment.Center
-        ) {
-            IconWithDescription(
-                iconId = R.drawable.baseline_cloud_24,
-                "Weather",
-                iconSize = 25.dp,
-                textSize = 10.sp
-            )
+    }
+}
+
+@Composable
+fun NavigationSetup(navController: NavHostController, data: List<Weather>) {
+    NavHost(navController = navController, startDestination = BottomNavItem.Cities.route) {
+        composable(BottomNavItem.Cities.route) {
+            CitiesScreen(data)
+        }
+        composable(BottomNavItem.Weather.route) {
+            WeatherScreen(data.get(3))
         }
     }
 }
