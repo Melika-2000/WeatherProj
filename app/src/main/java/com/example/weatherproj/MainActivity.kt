@@ -12,6 +12,14 @@ import com.example.weatherproj.ui.NavigationSetup
 import com.example.weatherproj.ui.TopBar
 import com.example.weatherproj.ui.theme.LightNavyBlue
 import com.example.weatherproj.ui.theme.WeatherProjTheme
+import com.example.weatherproj.data.local.db.AppDatabase
+import com.example.weatherproj.data.network.ApiCall
+import com.example.weatherproj.data.network.httpClient
+import com.example.weatherproj.ui.cities.CitiesScreen
+import com.example.weatherproj.ui.theme.WeatherProjTheme
+import com.example.weatherproj.ui.weather.WeatherScreen
+import io.ktor.client.request.*
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -20,6 +28,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherProjTheme {
                 App()
+
+//                runBlocking {
+//                    val apiCall = ApiCall(httpClient)
+//                    //  val aa = apiCall.fetchWeatherByCityId(524901)
+//                   val test = apiCall.fetchWeatherByCityName("London")
+//                    println("++++ " + test)
+//                }
             }
         }
     }
