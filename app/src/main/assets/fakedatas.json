@@ -1,0 +1,210 @@
+[
+  {
+    "coord": {
+      "lon": -0.1257 ,
+      "lat": 51.5085
+    } ,
+    "weather": [
+      {
+        "id": 310 ,
+        "main": "Drizzle" ,
+        "description": "light drizzle rain" ,
+        "icon": "09d"
+      } ,
+      {
+        "id": 500 ,
+        "main": "Rain" ,
+        "description": "light rain" ,
+        "icon": "10d"
+      }
+    ] ,
+    "base": "stations" ,
+    "main": {
+      "temp": 15.1 ,
+      "feels_like": 15.15 ,
+      "temp_min": 14.2 ,
+      "temp_max": 16.31 ,
+      "pressure": 1006 ,
+      "humidity": 95
+    } ,
+    "visibility": 3700 ,
+    "wind": {
+      "speed": 0.51 ,
+      "deg": 0
+    } ,
+    "rain": {
+      "1h": 0.2
+    } ,
+    "clouds": {
+      "all": 100
+    } ,
+    "dt": 1666253469 ,
+    "sys": {
+      "type": 2 ,
+      "id": 2075535 ,
+      "country": "GB" ,
+      "sunrise": 1666247552 ,
+      "sunset": 1666285067
+    } ,
+    "timezone": 3600 ,
+    "id": 2643743 ,
+    "name": "London" ,
+    "cod": 200
+  } ,
+  {
+    "coord": {
+      "lon": -0.157 ,
+      "lat": 51.505
+    } ,
+    "weather": [
+      {
+        "id": 311 ,
+        "main": "Drizzle" ,
+        "description": "light intensity drizzle rain" ,
+        "icon": "09d"
+      } ,
+      {
+        "id": 501 ,
+        "main": "Rain" ,
+        "description": "light rain" ,
+        "icon": "10d"
+      }
+    ] ,
+    "base": "stations" ,
+    "main": {
+      "temp": 20.1 ,
+      "feels_like": 15.15 ,
+      "temp_min": 14.2 ,
+      "temp_max": 26.31 ,
+      "pressure": 106 ,
+      "humidity": 40
+    } ,
+    "visibility": 3700 ,
+    "wind": {
+      "speed": 10 ,
+      "deg": 2
+    } ,
+    "rain": {
+      "1h": 0.2
+    } ,
+    "clouds": {
+      "all": 100
+    } ,
+    "dt": 1666253469 ,
+    "sys": {
+      "type": 2 ,
+      "id": 2075536 ,
+      "country": "GB" ,
+      "sunrise": 1666247552 ,
+      "sunset": 1666285067
+    } ,
+    "timezone": 3600 ,
+    "id": 2643743 ,
+    "name": "Tehran" ,
+    "cod": 200
+  } ,
+  {
+    "coord": {
+      "lon": -0.1247 ,
+      "lat": 51.25
+    } ,
+    "weather": [
+      {
+        "id": 312 ,
+        "main": "Drizzle" ,
+        "description": "heavy snow" ,
+        "icon": "09d"
+      } ,
+      {
+        "id": 502 ,
+        "main": "Snow" ,
+        "description": "light snow" ,
+        "icon": "10d"
+      }
+    ] ,
+    "base": "stations" ,
+    "main": {
+      "temp": 10 ,
+      "feels_like": 15.15 ,
+      "temp_min": 14.2 ,
+      "temp_max": 10.31 ,
+      "pressure": 106 ,
+      "humidity": 75
+    } ,
+    "visibility": 3700 ,
+    "wind": {
+      "speed": 4.51 ,
+      "deg": 1
+    } ,
+    "rain": {
+      "1h": 0.2
+    } ,
+    "clouds": {
+      "all": 100
+    } ,
+    "dt": 1666253469 ,
+    "sys": {
+      "type": 2 ,
+      "id": 2075540 ,
+      "country": "GB" ,
+      "sunrise": 1666247552 ,
+      "sunset": 1666285067
+    } ,
+    "timezone": 3600 ,
+    "id": 2643753 ,
+    "name": "Tokyo" ,
+    "cod": 200
+  } ,
+  {
+    "coord": {
+      "lon": -0.7257 ,
+      "lat": 35.9
+    } ,
+    "weather": [
+      {
+        "id": 310 ,
+        "main": "Drizzle" ,
+        "description": "sunny" ,
+        "icon": "09d"
+      } ,
+      {
+        "id": 503 ,
+        "main": "Sun" ,
+        "description": "clear sky" ,
+        "icon": "10d"
+      }
+    ] ,
+    "base": "stations" ,
+    "main": {
+      "temp": 28 ,
+      "feels_like": 25.15 ,
+      "temp_min": 14.2 ,
+      "temp_max": 36.31 ,
+      "pressure": 1016 ,
+      "humidity": 15
+    } ,
+    "visibility": 3700 ,
+    "wind": {
+      "speed": 1.45 ,
+      "deg": 0
+    } ,
+    "rain": {
+      "1h": 0.2
+    } ,
+    "clouds": {
+      "all": 100
+    } ,
+    "dt": 1666253469 ,
+    "sys": {
+      "type": 2 ,
+      "id": 2075555 ,
+      "country": "GB" ,
+      "sunrise": 1666247552 ,
+      "sunset": 1666285067
+    } ,
+    "timezone": 3600 ,
+    "id": 2643243 ,
+    "name": "Sary" ,
+    "cod": 200
+  }
+]

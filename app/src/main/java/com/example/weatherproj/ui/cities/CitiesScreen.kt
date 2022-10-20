@@ -1,7 +1,6 @@
 package com.example.weatherproj.ui.cities
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -20,9 +19,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weatherproj.Weather
 import com.example.weatherproj.R
+
+import com.example.weatherproj.data.network.BaseApiCall
 import com.example.weatherproj.ui.*
 import com.example.weatherproj.ui.theme.LightNavyBlue
 import com.example.weatherproj.ui.theme.NavyBlue
@@ -30,7 +31,16 @@ import com.example.weatherproj.ui.theme.NavyBlue
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun CitiesScreen(data: List<Weather>) {
+fun CitiesScreen(
+    data: List<Weather> = listOf(),
+    apiCall: BaseApiCall,
+) {
+    val context = LocalContext.current
+    val factory = ViewModelFactory(
+        context = context,
+        apiCall
+    )
+    val viewModel: CitiesViewModel = viewModel(CitiesViewModel::class.java, factory = factory)
     LazyColumn(
         modifier = Modifier
             .padding(
@@ -39,21 +49,33 @@ fun CitiesScreen(data: List<Weather>) {
                 bottom = 55.dp
             )
     ) {
-        item { SearchBar() }
+        item {
+            SearchBar(onSearch = {
+                viewModel.insertCity(it)
+            })
+        }
         items(data) { city ->
-            CustomCard(city)
+            CustomCard(
+                city,
+                onDelete = {
+                    viewModel.insertCity(it)
+
+                },
+            )
         }
     }
 }
 
 @Composable
-private fun SearchBar() {
+private fun SearchBar(
+    onSearch: (String) -> Unit = {},
+) {
 
     var text by rememberSaveable {
         mutableStateOf("")
     }
 
-    var citySearchResult by rememberSaveable {
+    val citySearchResult by rememberSaveable {
         mutableStateOf(SearchResult.DEFAULT)
     }
 
@@ -70,14 +92,19 @@ private fun SearchBar() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             SearchField(
-                text = text, onValueChange = {
+                text = text,
+                onValueChange = {
                     text = it
-                    citySearchResult = SearchResult.NOT_FOUND
                 },
                 modifier = Modifier.weight(5f)
             )
             Spacer(modifier = Modifier.size(10.dp))
-            SearchButton(modifier = Modifier.weight(1f))
+            SearchButton(
+                modifier = Modifier.weight(1f),
+                inputText = text,
+                result = citySearchResult,
+                onSearch = onSearch /// text behesh dade beshe
+            )
         }
         if (citySearchResult == SearchResult.NOT_FOUND) {
             Text(
@@ -96,7 +123,7 @@ private fun SearchBar() {
 private fun SearchField(
     text: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     TextField(
         value = text,
@@ -118,15 +145,15 @@ private fun SearchField(
 }
 
 @Composable
-private fun SearchButton(modifier: Modifier, enabled: Boolean = true) {
+private fun SearchButton(
+    inputText: String,
+    result: SearchResult,
+    modifier: Modifier = Modifier,
+    onSearch: (String) -> Unit = {},
+) {
     val context = LocalContext.current
     Button(
-        onClick = {
-            Toast
-                .makeText(context, "TODO", Toast.LENGTH_SHORT)
-                .show()
-        },
-        enabled = enabled,
+        onClick = { onSearch(inputText) },
         modifier = modifier.height(55.dp),
         shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
@@ -143,7 +170,11 @@ private fun SearchButton(modifier: Modifier, enabled: Boolean = true) {
 }
 
 @Composable
-private fun CustomCard(cityWeather: Weather) {
+private fun CustomCard(
+    cityWeather: Weather,
+    //  onEdit: (String) -> Unit,
+    onDelete: (String) -> Unit,
+) {
     val iconSize = 20.dp
     Card(
         modifier = Modifier

@@ -1,5 +1,6 @@
 package com.example.weatherproj.data.network.model
 
+import androidx.annotation.Keep
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,5 +13,6 @@ data class ApiResponse(
     @SerialName("sys") val sys: SysResponse? = null,
     @SerialName("id") val cityId: Int,
     @SerialName("name") val name: String? = null,
-    @SerialName("timezone") val time: Long? = null
+    @SerialName("timezone") val time: Long? = null,
+    @SerialName("cod") val code: Int? = null  // if city name is wrong
 )

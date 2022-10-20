@@ -23,6 +23,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.weatherproj.Weather
+import com.example.weatherproj.data.network.BaseApiCall
 import com.example.weatherproj.ui.cities.CitiesScreen
 import com.example.weatherproj.ui.theme.LightBlue
 import com.example.weatherproj.ui.theme.NavyBlue
@@ -87,10 +88,16 @@ fun BottomBar(navController: NavController, isDay: Boolean = false) {
 }
 
 @Composable
-fun NavigationSetup(navController: NavHostController, data: List<Weather>) {
+fun NavigationSetup(
+    navController: NavHostController,
+    data: List<Weather>,
+    apiCAll: BaseApiCall,
+) {
+
     NavHost(navController = navController, startDestination = BottomNavItem.Cities.route) {
+
         composable(BottomNavItem.Cities.route) {
-            CitiesScreen(data)
+            CitiesScreen(data, apiCAll)
         }
         composable(BottomNavItem.Weather.route) {
             WeatherScreen(data.get(3))
@@ -105,7 +112,7 @@ fun CustomText(
     textSize: TextUnit = 20.sp,
     fontWeight: FontWeight? = null,
     color: Color = Color.White,
-    alpha: Float = 0.8f
+    alpha: Float = 0.8f,
 ) {
     Text(
         text = text,
@@ -122,7 +129,7 @@ fun CustomIcon(
     size: Dp = 40.dp,
     clickable: Boolean = false,
     color: Color = Color.White,
-    alpha: Float = 0.8f
+    alpha: Float = 0.8f,
 ) {
     val context = LocalContext.current
     Icon(
